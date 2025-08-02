@@ -41,7 +41,7 @@ This project is a complete machine learning solution for predicting student plac
 **reg.pkl and reg_model.pkl:** The serialized model and scaler objects.
 
 ****How to Run the Project:****
-    1.Clone the repository: git clone 
+    1.Clone the repository: git clone [https://github.com/1079maan/Student-Placement-Prediction-using-ML-model]
     
     2.Set up the Python environment: Install the required libraries (Flask, numpy, scikit-learn, joblib).
     
