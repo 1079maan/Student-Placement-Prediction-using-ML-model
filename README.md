@@ -1,60 +1,174 @@
-# Student-Placement-Prediction-using-ML-model
+# PlaceMate – Student Placement Prediction & Analytics System
 
 ****Project Overview:****
 
-This project is a complete machine learning solution for predicting student placement based on their CGPA and IQ scores. It covers the full lifecycle of a machine learning project, from data exploration and model training to deployment as a web application.
+PlaceMate is a complete end-to-end mini-project that predicts a student's placement chances using Machine Learning and provides an interactive web dashboard for analytics.
+
+The system includes:
+A trained ML model (Logistic Regression)
+A Flask backend API
+A full frontend UI (Home, Predict, Analytics, About pages)
+A real-time analytics dashboard powered by charts and KPIs
+A dataset-based summary view displayed on the home page
+The project demonstrates ML workflow, API integration, web development, and real-time visualization — perfect for college mini-projects.
 
 ****Project Files:****
 
-**end_to_end_ml.ipynb:** A Jupyter Notebook detailing the entire machine learning process. This includes:
+**1. Machine Learning & Data Processing** :
 
-    Data Loading & EDA: Using Pandas to load the placement.csv dataset and perform exploratory data analysis.
+🔹 new_placement.csv
+
+    Dataset containing:
     
-    Data Preprocessing: Splitting data into training and testing sets, and using StandardScaler to normalize features.
+    CGPA
     
-    Model Training: Implementing and training a LogisticRegression model from scikit-learn.
+    IQ
     
-    Evaluation: Calculating and displaying the model's accuracy.
+    Internship Experience
     
-    Model Persistence: Saving the trained model (reg_model.pkl) and the scaler (reg.pkl) using pickle and joblib.
+    Projects Completed
+    
+    Placement (Target: 1 = Placed, 0 = Not Placed)
 
-**app.py:** A Flask-based backend server. This Python script:
+🔹 Model Training (Notebook / Script)
+    Includes:
+    
+    Data Loading & Cleaning
+    
+    EDA
+    
+    Label Encoding / Preprocessing
+    
+    Train–Test Split
+    
+    Scaling with StandardScaler
+    
+    Logistic Regression training
+    
+    Accuracy evaluation
+    
+    Saving Model (model.pkl) and Scaler (scaler.pkl)
 
-    Loads the pre-trained reg_model.pkl and reg.pkl files.
+**2. Backend – Flask API** A Flask-based backend server. This Python script:
 
-    Exposes a /predict API endpoint to handle POST requests with CGPA and IQ data.
+   🔹 app.py
 
-    Scales the input data and uses the model to predict student placement (placed or not placed).
+Flask server that:
 
-    Returns the prediction as a JSON response.
+    ✔ Loads ML model + scaler
+    
+        model.pkl  
+        
+        scaler.pkl
 
-**student.html:** The front-end of the web application. This HTML file, styled with style.css, provides a user interface to:
+    ✔ Provides API endpoints
+    
+    Endpoint	Method	Description
+    
+    /predict	POST	Predict placement using CGPA, IQ, Internship, Projects
+    
+    /analytics	GET	    Returns dataset analytics (KPIs + charts data)
+    
+    ✔ Backend Tasks
+    
+    Validate user input
+    
+    Preprocess input using stored scaler
+    
+    Predict using ML model
+    
+    Send JSON back to frontend
+    
+    Compute analytics summary from CSV
+    
+**3. Frontend UI**:
 
-    Input CGPA and IQ scores.
+    🔹 new.html (Analytics Page)
 
-    Send the data to the Flask backend's /predict endpoint.
+        Displays:
+        
+        Placement Rate
+        
+        Avg CGPA
+        
+        Avg IQ
+        
+        Avg Projects
+        
+        4 Charts (2×2 layout):
+        
+        CGPA vs Probability
+        
+        Placed vs Not Placed
+        
+        Internship vs Probability
+        
+        Projects Distribution
 
-    Display the prediction result to the user.
+    🔹 new.js
 
-**style.css:** The CSS file used to style the student.html page with a modern, "neon-tech" theme.
+        Handles:
+        
+        API requests to Flask
+        
+        Rendering charts with Chart.js
+        
+        Updating KPIs
+        
+        Managing prediction history
 
-**reg.pkl and reg_model.pkl:** The serialized model and scaler objects.
+    🔹 new.css
+    
+        Modern clean UI:
+        
+        Navbar
+        
+        Cards
+        
+        KPI section
+        
+        Chart grid layout
+        
+        Responsive design
+
+
 
 ****How to Run the Project:****
 
-    1.Clone the repository: git clone [https://github.com/1079maan/Student-Placement-Prediction-using-ML-model]
+1. Clone the Repository
+    git clone https://github.com/your-username/PlaceMate.git
+    cd PlaceMate
+
+2. Install Required Libraries
+    pip install flask numpy pandas scikit-learn joblib
+
+3. Start the Flask Server
+    python app.py
+   
+    Server will run on:
+
+    http://localhost:5000
+
+4. Run the Frontend
+
+    Simply open:
+   
+    new.html
+   
+6. Use the App
+
+    Enter details → Get placement prediction
     
-    2.Set up the Python environment: Install the required libraries (Flask, numpy, scikit-learn, joblib).
+    Generate PDF
     
-    3.Run the backend server: Navigate to the project directory and run python app.py.
+    View analytics & charts
     
-    4.Open the front-end: Open the student.html file in your web browser.
-    
-    5.Interact with the app: Input a CGPA and IQ score, then click "Predict Placement" to see the result.
+    Explore dataset KPIs
 
 ****Technologies Used****
-    **Machine Learning:** Python, Pandas, Scikit-learn
+
+    Machine Learning: Python, Pandas, Numpy, Scikit-learn
     
-    **Backend:** Flask
+    Backend: Flask, Joblib / Pickle
     
-    **Frontend:** HTML, CSS, JavaScript
+    Frontend: HTML, CSS, JavaScript, Chart.js
